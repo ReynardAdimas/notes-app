@@ -15,14 +15,10 @@ const Note = sequelize.define("Note", {
         type: DataTypes.STRING, 
         allowNull: false
     }, 
-    created_at: {
-        type: DataTypes.DATE(6), 
-        allowNull: false
-    }, 
-    updated_at: {
-        type: DataTypes.DATE(6), 
-        allowNull: false
-    }
+}, {
+    timestamps: true, 
+    createdAt: 'created_at', 
+    updatedAt: 'updated_at'
 }) 
 
 module.exports = Note
