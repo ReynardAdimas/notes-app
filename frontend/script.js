@@ -1,118 +1,36 @@
-let notes = [
-    {
-        id: 1,
-        title: "Feedbacks",
-        content: "Lorem ipsum dolor sit amet consectetur. Sollicitudin enim risus ut vestibulum morbi tellus sit ac. Fames auctor quisque et aliquam maecenas sed at vitae facilisis.",
-        date: "5 days ago"
-    },
-    {
-        id: 2,
-        title: "Weekly Task",
-        content: "Lorem ipsum dolor sit amet consectetur. Sollicitudin enim risus ut vestibulum morbi tellus sit ac. Fames auctor quisque et aliquam maecenas sed at vitae facilisis.",
-        date: "2 weeks ago"
-    },
-    {
-        id: 3,
-        title: "Lyrics",
-        content: "Lorem ipsum dolor sit amet consectetur. Sollicitudin enim risus ut vestibulum morbi tellus sit ac. Fames auctor quisque et aliquam maecenas sed at vitae facilisis.",
-        date: "3 weeks ago"
-    }
-];
+let isEditMode = false;
 
-// Elemen DOM
-const notesGrid = document.getElementById('notes-grid');
-const formTitle = document.getElementById('form-title');
-const submitBtn = document.getElementById('submit-btn');
-const inputTitle = document.getElementById('note-title');
-const inputContent = document.getElementById('note-content');
-
-let isEditing = false;
-let currentEditId = null;
-
-// Fungsi untuk menampilkan catatan
-function renderNotes() {
-    notesGrid.innerHTML = '';
-    notes.forEach(note => {
-        const noteCard = document.createElement('div');
-        noteCard.className = 'note-card';
-        noteCard.innerHTML = `
-            <div class="note-card-header">
-                <div class="note-card-title">${note.title}</div>
-                <div class="note-actions">
-                    <i class="fa-solid fa-pencil" onclick="editNote(${note.id})"></i>
-                    <i class="fa-regular fa-trash-can" onclick="deleteNote(${note.id})"></i>
-                </div>
-            </div>
-            <div class="note-card-content">
-                ${note.content}
-            </div>
-            <div class="note-card-footer">
-                ${note.date}
-            </div>
-        `;
-        notesGrid.appendChild(noteCard);
-    });
+function setEditMode() {
+    isEditMode = true;
+    updateUI();
 }
 
-// Fungsi untuk mengubah UI form menjadi mode Edit
-window.editNote = function(id) {
-    const noteToEdit = notes.find(n => n.id === id);
-    if (!noteToEdit) return;
+function toggleMode() {
+    // Simulasi jika tombol Add/Edit ditekan, kembali ke Add mode
+    isEditMode = !isEditMode;
+    updateUI();
+}
 
-    isEditing = true;
-    currentEditId = id;
-    
-    // Ubah text UI sesuai gambar "Edit a Note"
-    formTitle.innerText = "Edit a Note";
-    submitBtn.innerText = "Edit";
-    
-    // Isi input dengan data catatan
-    inputTitle.value = noteToEdit.title;
-    inputContent.value = noteToEdit.content;
-};
+function updateUI() {
+    const title = document.getElementById('form-title');
+    const btnDesktop = document.getElementById('btn-submit-desktop');
+    const btnMobile = document.getElementById('btn-submit-mobile');
 
-// Fungsi menghapus catatan (bonus fungsionalitas)
-window.deleteNote = function(id) {
-    notes = notes.filter(n => n.id !== id);
-    renderNotes();
-};
-
-// Simulasi tombol Add / Edit ditekan
-submitBtn.addEventListener('click', () => {
-    if(inputTitle.value.trim() === '' || inputContent.value.trim() === '') return;
-
-    if (isEditing) {
-        // Logika Update (Edit)
-        const noteIndex = notes.findIndex(n => n.id === currentEditId);
-        if (noteIndex !== -1) {
-            notes[noteIndex].title = inputTitle.value;
-            notes[noteIndex].content = inputContent.value;
-        }
+    if (isEditMode) {
+        title.innerText = "Edit a Note";
+        btnDesktop.innerText = "Edit";
+        btnMobile.innerText = "Edit";
         
-        // Kembalikan UI ke mode "Add a Note"
-        isEditing = false;
-        currentEditId = null;
-        formTitle.innerText = "Add a Note";
-        submitBtn.innerText = "Add";
-
+        // Sedikit mengubah tampilan input untuk mensimulasikan data yang sedang diedit
+        document.querySelector('.input-title').value = "Weekly Task";
+        document.querySelector('.input-body').value = "Lorem ipsum dolor sit amet...";
     } else {
-        // Logika Create (Add)
-        const newNote = {
-            id: Date.now(), // ID unik sederhana
-            title: inputTitle.value,
-            content: inputContent.value,
-            date: "Just now"
-        };
-        notes.unshift(newNote); // Tambah ke awal array
+        title.innerText = "Add a Note";
+        btnDesktop.innerText = "Add";
+        btnMobile.innerText = "Add";
+        
+        // Kosongkan form
+        document.querySelector('.input-title').value = "";
+        document.querySelector('.input-body').value = "";
     }
-
-    // Reset input form
-    inputTitle.value = '';
-    inputContent.value = '';
-    
-    // Update tampilan grid
-    renderNotes();
-});
-
-// Render awal saat halaman dimuat
-renderNotes();
+}

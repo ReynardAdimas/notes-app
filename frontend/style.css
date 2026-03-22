@@ -1,83 +1,77 @@
-/* Reset & Base Styles */
+:root {
+    --bg-main: #e8ecf4;
+    --bg-sidebar: #f4f6f9;
+    --bg-card: #ffffff;
+    --text-dark: #203459;
+    --text-muted: #6b7a99;
+    --btn-primary: #203459;
+    --btn-light: #e0e6f5;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-color: #e2eaf4; 
-    color: #2c3e50;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
 }
 
-.app-container {
+.container {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
 }
 
-/* SIDEBAR */
+/* Sidebar Desktop */
 .sidebar {
-    width: 280px;
-    background-color: #f4f7fb; /* Warna sidebar sedikit lebih terang */
-    padding: 40px 30px;
+    width: 250px;
+    background-color: var(--bg-sidebar);
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
 }
 
-.brand-title {
-    color: #203a61;
-    font-size: 28px;
+.logo {
+    font-size: 24px;
     font-weight: 700;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 20px;
-    background-color: #203a61;
+    display: block;
+    padding: 10px 15px;
+    background-color: var(--btn-primary);
     color: white;
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 16px;
+    border-radius: 6px;
+    margin-bottom: 30px;
 }
 
 .user-info {
-    margin-top: 60px;
-    color: #1a1a1a;
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
-.user-info h2 {
-    font-size: 20px;
-    margin-bottom: 8px;
-    color: #000;
-}
-
-.user-info p {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: #000;
-}
-
-/* KONTEN UTAMA */
+/* Main Content */
 .main-content {
     flex: 1;
-    padding: 40px 60px;
+    padding: 40px;
     overflow-y: auto;
 }
 
-/* Form Container */
-.form-container {
-    background-color: #f4f7fb;
+/* Form Card */
+.form-card {
+    background: var(--bg-card);
+    padding: 30px;
     border-radius: 16px;
-    padding: 30px 40px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    margin-bottom: 50px;
-    border: 1px solid #e1e8f0;
+    margin-bottom: 40px;
+    border: 1px solid #dce2ee;
 }
 
 .form-header {
@@ -88,130 +82,163 @@ body {
 }
 
 .form-header h2 {
-    color: #4a6282;
-    font-size: 24px;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-dark);
 }
 
-.btn-primary {
-    background-color: #dde5f4;
-    color: #1e3a5f;
-    border: none;
-    padding: 10px 30px;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.2s;
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.btn-primary:hover {
-    background-color: #cdd8eb;
-}
-
-.input-title, .input-content {
-    width: 100%;
-    background: transparent;
+.input-title, .input-body {
     border: none;
     outline: none;
-    color: #4a6282;
+    background: transparent;
+    font-size: 18px;
+    color: var(--text-dark);
 }
 
 .input-title {
-    font-size: 22px;
-    margin-bottom: 20px;
+    font-size: 24px;
 }
 
-.input-title::placeholder {
-    color: #7b93af;
-}
-
-.input-content {
-    font-size: 16px;
+.input-body {
+    min-height: 80px;
     resize: none;
-    min-height: 60px;
-    border-left: 2px solid #b3c2d6;
-    padding-left: 15px;
+    border-left: 1px solid #cdd5e0;
+    padding-left: 10px;
 }
 
-.input-content::placeholder {
-    color: #9baec4;
+/* Buttons */
+.btn {
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-desktop {
+    padding: 8px 24px;
+    background-color: var(--btn-light);
+    color: var(--text-dark);
+}
+
+.btn-mobile {
+    display: none; /* Disembunyikan di desktop */
+    width: 100%;
+    padding: 15px;
+    background-color: var(--btn-primary);
+    color: white;
+    font-size: 16px;
+    margin-top: -20px;
+    margin-bottom: 40px;
 }
 
 /* Notes Section */
-.section-header h3 {
-    color: #1e3a5f;
-    font-size: 20px;
+.section-title {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .subtitle {
-    color: #647a97;
+    color: var(--text-muted);
     font-size: 14px;
     margin-bottom: 20px;
+    margin-top: 5px;
 }
 
 .notes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    display: flex;
     gap: 20px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 20px;
 }
 
-/* Note Card */
 .note-card {
-    background-color: #f8fafc;
+    background: var(--bg-card);
+    min-width: 280px;
     padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-    border: 1px solid #e2e8f0;
-    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #dce2ee;
     display: flex;
     flex-direction: column;
 }
 
-.note-card-header {
+.note-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
 
-.note-card-title {
-    color: #1e3a5f;
+.note-header h4 {
     font-size: 18px;
-    font-weight: 700;
 }
 
 .note-actions {
+    color: var(--text-dark);
     display: flex;
     gap: 10px;
-    color: #647a97;
-}
-
-.note-actions i {
     cursor: pointer;
-    transition: color 0.2s;
 }
 
-.note-actions i:hover {
-    color: #1e3a5f;
-}
-
-.note-card-content {
-    color: #4a5568;
+.note-body {
+    color: var(--text-dark);
     font-size: 14px;
-    line-height: 1.5;
-    flex-grow: 1;
     margin-bottom: 20px;
-    display: -webkit-box;
-    -webkit-line-clamp: 6; /* Batasi teks jadi 6 baris */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    flex: 1;
 }
 
-.note-card-footer {
-    color: #8da2ba;
+.note-date {
+    color: var(--text-muted);
     font-size: 12px;
+}
+
+/* MEDIA QUERIES UNTUK MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 20px;
+        background-color: var(--bg-main);
+    }
+
+    .nav-menu, .user-info {
+        display: none; /* Sembunyikan navigasi dan info user di mobile */
+    }
+
+    .main-content {
+        padding: 0 20px 20px 20px;
+    }
+
+    .btn-desktop {
+        display: none; /* Sembunyikan tombol kecil di atas form */
+    }
+
+    .btn-mobile {
+        display: block; /* Munculkan tombol besar di bawah form */
+        border-radius: 12px;
+    }
+    
+    .notes-grid {
+        /* Membiarkan kartu bisa di-scroll secara horizontal di layar kecil */
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .note-card {
+        scroll-snap-align: start;
+    }
 }
