@@ -1,4 +1,3 @@
-// Data awal (Dummy data seperti di gambar)
 let notes = [
     {
         id: 1,
