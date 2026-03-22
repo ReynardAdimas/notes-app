@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <h1 class="brand-title">Notes App</h1>
+            
+            <div class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <i class="fa-regular fa-file-lines"></i> Notes
+                </a>
+            </div>
+
+            <div class="user-info">
+                <h2>Reynard Adimas N.</h2>
+                <p>123230079</p>
+                <p>Prak TCC IF-B</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="form-container">
+                <div class="form-header">
+                    <h2 id="form-title">Add a Note</h2>
+                    <button id="submit-btn" class="btn-primary">Add</button>
+                </div>
+                <input type="text" id="note-title" class="input-title" placeholder="Title">
+                <textarea id="note-content" class="input-content" placeholder="Take a note..."></textarea>
+            </div>
+
+            <div class="notes-section">
+                <div class="section-header">
+                    <h3><i class="fa-regular fa-file-lines"></i> My Notes</h3>
+                    <p class="subtitle">Recently viewed</p>
+                </div>
+                
+                <div class="notes-grid" id="notes-grid">
+                    </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
