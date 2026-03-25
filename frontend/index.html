@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes App - Reynard</title>
+    <title>Notes App</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -33,15 +33,15 @@
                     <div class="form-header">
                         <h2 id="form-title">Add a Note</h2>
                         <!-- Tombol untuk versi Desktop -->
-                        <button class="btn btn-desktop" id="btn-submit-desktop" onclick="toggleMode()">Add</button>
+                        <button class="btn btn-desktop" id="btn-submit-desktop">Add</button>
                     </div>
                     <div class="form-inputs">
-                        <input type="text" placeholder="Title" class="input-title">
-                        <textarea placeholder="Take a note..." class="input-body"></textarea>
+                        <input type="text" placeholder="Title" class="input-title" id="input-title">
+                        <textarea placeholder="Take a note..." class="input-body" id="input-body"></textarea>
                     </div>
                 </div>
                 <!-- Tombol untuk versi Mobile -->
-                <button class="btn btn-mobile" id="btn-submit-mobile" onclick="toggleMode()">Add</button>
+                <button class="btn btn-mobile" id="btn-submit-mobile">Add</button>
             </div>
 
             <!-- Notes List Section -->
