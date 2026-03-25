@@ -1,0 +1,245 @@
+:root {
+    --bg-main: #e8ecf4;
+    --bg-sidebar: #f4f6f9;
+    --bg-card: #ffffff;
+    --text-dark: #203459;
+    --text-muted: #6b7a99;
+    --btn-primary: #203459;
+    --btn-light: #e0e6f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Desktop */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-sidebar);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.nav-item {
+    display: block;
+    padding: 10px 15px;
+    background-color: var(--btn-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+.user-info {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* Form Card */
+.form-card {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    margin-bottom: 40px;
+    border: 1px solid #dce2ee;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-header h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-title, .input-body {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 18px;
+    color: var(--text-dark);
+}
+
+.input-title {
+    font-size: 24px;
+}
+
+.input-body {
+    min-height: 80px;
+    resize: none;
+    border-left: 1px solid #cdd5e0;
+    padding-left: 10px;
+}
+
+/* Buttons */
+.btn {
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-desktop {
+    padding: 8px 24px;
+    background-color: var(--btn-light);
+    color: var(--text-dark);
+}
+
+.btn-mobile {
+    display: none; /* Disembunyikan di desktop */
+    width: 100%;
+    padding: 15px;
+    background-color: var(--btn-primary);
+    color: white;
+    font-size: 16px;
+    margin-top: -20px;
+    margin-bottom: 40px;
+}
+
+/* Notes Section */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+.notes-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+.note-card {
+    background: var(--bg-card);
+    min-width: 280px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #dce2ee;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.note-header h4 {
+    font-size: 18px;
+}
+
+.note-actions {
+    color: var(--text-dark);
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.note-body {
+    color: var(--text-dark);
+    font-size: 14px;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.note-date {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+/* MEDIA QUERIES UNTUK MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 20px;
+        background-color: var(--bg-main);
+    }
+
+    .nav-menu, .user-info {
+        display: none; /* Sembunyikan navigasi dan info user di mobile */
+    }
+
+    .main-content {
+        padding: 0 20px 20px 20px;
+    }
+
+    .btn-desktop {
+        display: none; /* Sembunyikan tombol kecil di atas form */
+    }
+
+    .btn-mobile {
+        display: block; /* Munculkan tombol besar di bawah form */
+        border-radius: 12px;
+    }
+    
+    .notes-grid {
+        /* Membiarkan kartu bisa di-scroll secara horizontal di layar kecil */
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .note-card {
+        scroll-snap-align: start;
+    }
+}
