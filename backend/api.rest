@@ -13,13 +13,13 @@
 
 # ###
 # POST : Create User
-POST http://localhost:3000/api/v1/notes HTTP/1.1
-Content-Type: application/json
+# POST http://localhost:3000/api/v1/notes HTTP/1.1
+# Content-Type: application/json
 
-{
-  "judul": "Tes UI Judul",
-  "isi": "Tes UI isi"
-}
+# {
+#   "judul": "Tes UI Judul #3",
+#   "isi": "Tes UI isi #3"
+# }
 
 # ###
 # # PUT : Update User
@@ -27,12 +27,12 @@ Content-Type: application/json
 # Content-Type: application/json
 
 # {
-#   "username": "John Doe Updated",
-#   "email": "johndoeupdated@example.com"
+#   "judul": "John Doe Updated",
+#   "isi": "johndoeupdated@example.com"
 # }
 
 # ###
 # # DELETE : Delete User
-# DELETE http://localhost:3000/api/v1/notes/1 HTTP/1.1
-# Content-Type: application/json
+DELETE http://localhost:3000/api/v1/notes/2 HTTP/1.1
+Content-Type: application/json
 
