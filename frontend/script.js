@@ -1,10 +1,13 @@
-const API_URL = "https://localhost:3000/api/v1/notes" 
+const API_URL = "http://localhost:3000/api/v1/notes" 
 
 const inputTitle = document.getElementById("input-title")
 const inputBody = document.getElementById("input-body")
 const formTitle = document.getElementById("form-title")
 const btnDesktop = document.getElementById("btn-submit-desktop")
 const btnMobile = document.getElementById("btn-submit-mobile")
+// const btnCancel = document.getElementById("btn-cancel")
+// const btnCancelMobile = document.getElementById("btn-cancel-mobile")
+const logoElement = document.querySelector(".logo")
 const notesGrid = document.querySelector(".notes-grid") 
 
 let currentEditId = null 
@@ -16,7 +19,7 @@ async function fetchNotes() {
         const res = await fetch(API_URL) 
         const result = await res.json() 
 
-        const notes = res.data || res 
+        const notes = result.data || result 
         renderNotes(notes)
     } catch (error) {
         console.error("Gagal mengambil data dari server:", error)
@@ -105,7 +108,9 @@ function setEditMode(id, judul, isi) {
 
     formTitle.innerText = "Edit a Note" 
     btnDesktop.innerText = "Save Edit" 
-    btnMobile.innerText = "Save Edit" 
+    btnMobile.innerText = "Save Edit"  
+    // btnCancel.style.display = "inline-block"
+    // btnCancelMobile.style.display = "inline-block"
     window.scrollTo({
         top:0, 
         behavior: 'smooth'
@@ -120,6 +125,9 @@ function resetForm() {
     formTitle.innerText = "Add a Note" 
     btnDesktop.innerText = "Add" 
     btnMobile.innerText = "Add" 
+
+    // btnCancel.style.display = "none"
+    // btnCancelMobile.style.display = "none"
 } 
 
 function escapeHTML(str) {
@@ -146,3 +154,9 @@ function timeAgo(dateString) {
 
 btnDesktop.addEventListener("click", saveNote)
 btnMobile.addEventListener("click", saveNote)
+// btnCancel.addEventListener("click", resetForm)
+// btnCancelMobile.addEventListener("click", resetForm)
+
+logoElement.addEventListener("click", () => {
+    window.location.reload()
+})
